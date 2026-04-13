@@ -5,6 +5,7 @@ from aiogram import Dispatcher, Bot
 from aiogram.types import BotCommand, BotCommandScopeDefault
 from aiohttp import web
 from handlers import router
+from aiogram.types import Update
 
 # Загружаем TOKEN из .env
 load_dotenv()
@@ -35,7 +36,8 @@ async def set_commands():
 # Обработчик Webhook
 async def handle_webhook(request):
     data = await request.json()
-    await dp.feed_update(bot, data)
+    update = Update(**data)
+    await dp.feed_update(bot, update)
     return web.Response(text="ok")
 
 
