@@ -35,7 +35,7 @@ async def set_commands():
 # Обработчик Webhook
 async def handle_webhook(request):
     data = await request.json()
-    update = dp.feed_update(bot, data)
+    await dp.feed_update(bot, data)
     return web.Response(text="ok")
 
 
