@@ -56,7 +56,7 @@ async def main():
 
     # Создаём веб-приложение
     app = web.Application()
-    app.router.post("/webhook", handle_webhook)
+    app.router.add_post("/webhook", handle_webhook)
 
     runner = web.AppRunner(app)
     await runner.setup()
